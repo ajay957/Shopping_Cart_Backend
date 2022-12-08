@@ -25,4 +25,11 @@ public class ShoppingController {
     public List<Shopping> ViewShop(){
         return (List<Shopping>) dao.findAll();
     }
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/search",consumes = "application/json",produces = "application/json")
+    public List<Shopping> SearchProduct(@RequestBody Shopping s){
+        String category= String.valueOf(s.getCategory());
+        System.out.println(category);
+        return (List<Shopping>) dao.SearchProduct(s.getCategory());
+    }
 }
