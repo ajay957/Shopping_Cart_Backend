@@ -2,12 +2,10 @@ package com.example.shoppingcart_backend.controller;
 import com.example.shoppingcart_backend.dao.ShoppingDao;
 import com.example.shoppingcart_backend.model.Shopping;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class ShoppingController {
@@ -20,5 +18,11 @@ public class ShoppingController {
         HashMap<String,String > map = new HashMap<>();
         map.put("status","success");
         return map;
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/view")
+    public List<Shopping> ViewShop(){
+        return (List<Shopping>) dao.findAll();
     }
 }
