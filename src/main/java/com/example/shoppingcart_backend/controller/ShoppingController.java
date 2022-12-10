@@ -1,6 +1,8 @@
 package com.example.shoppingcart_backend.controller;
 import com.example.shoppingcart_backend.dao.ShoppingDao;
+import com.example.shoppingcart_backend.dao.UserDao;
 import com.example.shoppingcart_backend.model.Shopping;
+import com.example.shoppingcart_backend.model.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,13 @@ import java.util.List;
 public class ShoppingController {
     @Autowired
     private ShoppingDao dao;
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/")
+    public String HomePage(){
+        return "welcome to home page";
+    }
+
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public HashMap<String,String> AddProduct(@RequestBody Shopping s){
