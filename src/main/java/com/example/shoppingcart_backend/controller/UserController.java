@@ -2,12 +2,11 @@ package com.example.shoppingcart_backend.controller;
 import com.example.shoppingcart_backend.dao.UserDao;
 import com.example.shoppingcart_backend.model.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
+
 @RestController
 public class UserController {
     @Autowired
@@ -27,5 +26,11 @@ public class UserController {
         HashMap<String,String> map=new HashMap<>();
         map.put("status","success");
         return map;
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/adminview")
+    public List<UserRegister> ViewUser(){
+        return (List<UserRegister>) dao.findAll();
     }
 }
