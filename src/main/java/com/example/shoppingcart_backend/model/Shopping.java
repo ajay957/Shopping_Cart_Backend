@@ -11,6 +11,7 @@ public class Shopping {
     @Id
     @GeneratedValue
     private int id;
+    private String name;
     private String image;
     private String category;
     private String description;
@@ -19,8 +20,9 @@ public class Shopping {
     public Shopping() {
     }
 
-    public Shopping(int id, String image, String category, String description, int price) {
+    public Shopping(int id, String name, String image, String category, String description, int price) {
         this.id = id;
+        this.name=name;
         this.image = image;
         this.category = category;
         this.description = description;
@@ -33,6 +35,14 @@ public class Shopping {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getImage() {
